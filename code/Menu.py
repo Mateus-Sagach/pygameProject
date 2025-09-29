@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-class Player:
+class Menu:
     def __init__(self):
-        pass
+        self.window = None
 
-    def move(self, ):
+    def run(self, ):
         pass

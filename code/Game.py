@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-class EntityFactory:
+class Game:
     def __init__(self):
-        pass
+        self.window = None
 
-    def get_entity(self, entity_type):
+    def run(self, ):
         pass
