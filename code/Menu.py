@@ -18,8 +18,8 @@ class Menu:
         pygame.mixer_music.play(-1)  # parametro -1 faz a musica tocar infinitamente
         while True:
             self.window.blit(source=self.surf, dest=self.rect)  # primeiro desenha o background depois desenha o texto
-            self.menu_text(50, GAME_TITLE, COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
-            self.menu_text(50, GAME_TITLE, COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
+            self.menu_text(50, GAME_TITLE, COLOR_WHITE, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, GAME_TITLE, COLOR_WHITE, ((WIN_WIDTH / 2), 120))
             for i in range(len(MENU_OPTION)):
                 self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
 
