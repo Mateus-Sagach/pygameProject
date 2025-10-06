@@ -10,6 +10,9 @@ C_YELLOW = (255, 255, 0)
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
 
+EVENT_TIMEOUT = pygame.USEREVENT + 2
+
+
 ENTITY_DAMAGE ={
     'Level1Bg0': 0,
     'Level1Bg1': 0,
@@ -88,6 +91,11 @@ ENTITY_SPEED = {
     'Level1Bg4': 4,
     'Level1Bg5': 5,
     'Level1Bg6': 6,
+    'Level2Bg0': 0,
+    'Level2Bg1': 1,
+    'Level2Bg2': 2,
+    'Level2Bg3': 3,
+    'Level2Bg4': 4,
     'Player1': 3,
     'Player1Shot': 4,
     'Player2': 3,
@@ -107,6 +115,12 @@ ENTITY_SHOT_DELAY = {
 
 # G
 GAME_TITLE = 'Game Title'
+
+# L
+LV_BG_IMAGES_NUMBERS = {
+    'Level1Bg': 7,
+    'Level2Bg': 5,
+}
 
 # M
 MENU_OPTION = ('NEW GAME 1P',
@@ -128,9 +142,14 @@ PLAYER_KEY_RIGHT = {'Player1': pygame.K_RIGHT,
 PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
                     'Player2': pygame.K_LCTRL}
 
-#S
+# S
 
 SPAWN_TIME = 4000
+
+# T
+TIMEOUT_STEP = 100  # 0,1s
+TIMEOUT_LEVEL = 20000  # 20s
+
 
 # W
 WIN_WIDTH = 576
