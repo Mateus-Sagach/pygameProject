@@ -75,9 +75,9 @@ ENTITY_SCORE = {
     'Player1Shot': 0,
     'Player2': 0,
     'Player2Shot': 0,
-    'Enemy1': 100, #deixar inteiro depois do teste
+    'Enemy1': 100,
     'Enemy1Shot': 0,
-    'Enemy2': 125, #deixar inteiro depois do teste
+    'Enemy2': 125,
     'Enemy2Shot': 0,
 }
 
