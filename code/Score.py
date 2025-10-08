@@ -28,7 +28,7 @@ class Score:
                 score = player_score[0]
                 text = 'Enter Player 1 name (4 characters):'
             if game_mode == MENU_OPTION[1]:
-                score = (player_score[0] + player_score[1]) / 2
+                score = int((player_score[0] + player_score[1]) / 2)
                 text = 'Enter Team name (4 characters):'
             if game_mode == MENU_OPTION[2]:
                 if player_score[0] > player_score[1]:
@@ -42,7 +42,6 @@ class Score:
                     text = 'Enter Player 1 or 2 name(4 characters):'
 
             self.score_text(20, text, C_WHITE, SCORE_POS['EnterName'])
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -63,13 +62,14 @@ class Score:
 
     def show(self):
         pygame.mixer_music.load('./asset/Score.mp3')
-        pygame.mixer_music.play(-1)  # parametro -1 faz a musica tocar infinitamente
-        self.window.blit(source=self.surf, dest=self.rect)  # primeiro desenha o background depois desenha o texto
+        pygame.mixer_music.play(-1)
+        self.window.blit(source=self.surf, dest=self.rect)
         self.score_text(48, 'TOP 10 SCORE', C_YELLOW, SCORE_POS['Title'])
         self.score_text(20, 'NAME     SCORE           DATE      ', C_YELLOW, SCORE_POS['Label'])
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top10()
         db_proxy.close()
+
 
         for player_score in list_score:
             id_, name, score, date = player_score
