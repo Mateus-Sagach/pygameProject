@@ -2,6 +2,7 @@ from code.Const import WIN_WIDTH
 from code.Enemy import Enemy
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
+from code.Item import Item
 from code.Player import Player
 from code.PlayerShot import PlayerShot
 
@@ -10,6 +11,9 @@ class EntityMediator:
     @staticmethod
     def __verify_collision_window(ent: Entity):
         if isinstance(ent, Enemy):
+            if ent.rect.right < 0:
+                ent.health = 0
+        if isinstance(ent, Item):
             if ent.rect.right < 0:
                 ent.health = 0
         if isinstance(ent, PlayerShot):
@@ -29,6 +33,10 @@ class EntityMediator:
         elif isinstance(ent1, Player) and isinstance(ent2, EnemyShot):
             valid_interaction = True
         elif isinstance(ent1, EnemyShot) and isinstance(ent2, Player):
+            valid_interaction = True
+        elif isinstance(ent1, Player) and isinstance(ent2, Item):
+            valid_interaction = True
+        elif isinstance(ent1, Item) and isinstance(ent2, Player):
             valid_interaction = True
 
         if valid_interaction:  # equals if valid_interaction == True:
@@ -53,6 +61,18 @@ class EntityMediator:
                     ent.score += enemy.score
 
     @staticmethod
+    def __give_item(item: Item, entity_list: list[Entity]):
+        if item.last_dmg == 'Player1':
+            for ent in entity_list:
+                if ent.name == 'Player1':
+                    ent.score += item.score
+                    #ent.
+        elif item.last_dmg == 'Player2':
+            for ent in entity_list:
+                if ent.name == 'Player2':
+                    ent.score += item.score
+
+    @staticmethod
     def verify_collision(entity_list: list[Entity]):
         for i in range(len(entity_list)):
             entity1 = entity_list[i]
@@ -67,4 +87,6 @@ class EntityMediator:
             if ent.health <= 0:
                 if isinstance(ent, Enemy):
                     EntityMediator.__give_score(ent, entity_list)
+                if isinstance(ent, Item):
+                    EntityMediator.__give_item(ent, entity_list)
                 entity_list.remove(ent)

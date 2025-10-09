@@ -7,8 +7,8 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
-    TIMEOUT_STEP, TIMEOUT_LEVEL, TEXT_NAME, C_ORANGE
+from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME_ENEMY, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
+    TIMEOUT_STEP, TIMEOUT_LEVEL, TEXT_NAME_MENU, C_ORANGE, C_YELLOW, EVENT_ITEM, SPAWN_TIME_ITEM
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -31,7 +31,8 @@ class Level:
             player = EntityFactory.get_entity('Player2')
             player.score = player_score[1]
             self.entity_list.append(player)
-        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
+        pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME_ENEMY)
+        pygame.time.set_timer(EVENT_ITEM, SPAWN_TIME_ITEM)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)  # 100ms
 
     def run(self, player_score: list[int]):
@@ -50,7 +51,7 @@ class Level:
                 if ent.name == 'Player1':
                     self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', C_ORANGE, (10, 25))
                 if ent.name == 'Player2':
-                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', C_ORANGE, (10, 45))
+                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', C_YELLOW, (10, 45))
 
                 ent.move()
             for event in pygame.event.get():
@@ -60,6 +61,9 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
+                if event.type == EVENT_ITEM:
+                    # implementar depois de colocar segundo item choice = random.choice(('Item1', 'Item2'))
+                    self.entity_list.append(EntityFactory.get_entity('Item1'))
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
@@ -87,7 +91,7 @@ class Level:
             EntityMediator.verify_health(entity_list=self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name=TEXT_NAME, size=text_size)
+        text_font: Font = pygame.font.SysFont(name=TEXT_NAME_MENU, size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)

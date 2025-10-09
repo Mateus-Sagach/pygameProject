@@ -6,9 +6,12 @@ C_WHITE = (255, 255, 255)
 C_GREEN = (0, 128, 0)
 C_CYAN = (0, 128, 128)
 C_YELLOW = (255, 255, 0)
+C_MAGENTA = (146, 0, 105)
+
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
+EVENT_ITEM = pygame.USEREVENT + 3
 
 EVENT_TIMEOUT = pygame.USEREVENT + 2
 
@@ -32,7 +35,8 @@ ENTITY_DAMAGE = {
     'Enemy1': 1,
     'Enemy1Shot': 20,
     'Enemy2': 1,
-    'Enemy2Shot': 15,
+    'Enemy2Shot': 50,
+    'Item1': 0,
 }
 
 ENTITY_HEALTH = {
@@ -56,6 +60,7 @@ ENTITY_HEALTH = {
     'Enemy1Shot': 1,
     'Enemy2': 60,
     'Enemy2Shot': 1,
+    'Item1': 1,
 }
 
 ENTITY_SCORE = {
@@ -79,6 +84,7 @@ ENTITY_SCORE = {
     'Enemy1Shot': 0,
     'Enemy2': 125,
     'Enemy2Shot': 0,
+    'Item1': 100,
 }
 
 ENTITY_SPEED = {
@@ -102,6 +108,8 @@ ENTITY_SPEED = {
     'Enemy1Shot': 5,
     'Enemy2': 1,
     'Enemy2Shot': 2,
+    'Item1': 2,
+
 }
 
 ENTITY_SHOT_DELAY = {
@@ -112,7 +120,7 @@ ENTITY_SHOT_DELAY = {
 }
 
 # G
-GAME_TITLE = 'Teste'
+GAME_TITLE = 'Magic Fly'
 
 # L
 LV_BG_IMAGES_NUMBERS = {
@@ -141,12 +149,14 @@ PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
                     'Player2': pygame.K_LCTRL}
 
 # S
-SPAWN_TIME = 2000
+SPAWN_TIME_ENEMY = 1000
+SPAWN_TIME_ITEM = 2000
 
 # T
 TIMEOUT_STEP = 100  # 0,1s
 TIMEOUT_LEVEL = 10000  # 20s
-TEXT_NAME = 'Baskerville Old Face'
+TEXT_NAME_MENU = 'Britannic'
+TEXT_NAME_SCORE = 'Courier New'
 
 # W
 WIN_WIDTH = 576
