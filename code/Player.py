@@ -9,9 +9,10 @@ from code.PlayerShot import PlayerShot
 
 
 class Player(Entity):
-    def __init__(self, name: str, position: tuple):
+    def __init__(self, name: str, position: tuple, shot_type: str):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+        self.shot_type = shot_type
 
     def update(self, ):
         pass
@@ -34,7 +35,7 @@ class Player(Entity):
             self.shot_delay = ENTITY_SHOT_DELAY[self.name]
             pressed_key = pygame.key.get_pressed()
             if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
-                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+                return PlayerShot(name=f'{self.shot_type}Shot', position=(self.rect.centerx, self.rect.centery))
             else:
                 return None
         else:

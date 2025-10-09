@@ -1,4 +1,4 @@
-from code.Const import WIN_WIDTH
+from code.Const import WIN_WIDTH, ENTITY_SHOT_DELAY
 from code.Enemy import Enemy
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
@@ -61,16 +61,15 @@ class EntityMediator:
                     ent.score += enemy.score
 
     @staticmethod
-    def __give_item(item: Item, entity_list: list[Entity]):
+    def give_item(item: Item, entity_list: list[Entity]):
         if item.last_dmg == 'Player1':
             for ent in entity_list:
                 if ent.name == 'Player1':
-                    ent.score += item.score
-                    #ent.
+                    ent.shot_type = item.name
         elif item.last_dmg == 'Player2':
             for ent in entity_list:
                 if ent.name == 'Player2':
-                    ent.score += item.score
+                    ent.shot_type = item.name
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
@@ -88,5 +87,5 @@ class EntityMediator:
                 if isinstance(ent, Enemy):
                     EntityMediator.__give_score(ent, entity_list)
                 if isinstance(ent, Item):
-                    EntityMediator.__give_item(ent, entity_list)
+                    EntityMediator.give_item(ent, entity_list)
                 entity_list.remove(ent)

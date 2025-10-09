@@ -37,6 +37,8 @@ ENTITY_DAMAGE = {
     'Enemy2': 1,
     'Enemy2Shot': 50,
     'Item1': 0,
+    'Item1Shot': 100,
+
 }
 
 ENTITY_HEALTH = {
@@ -61,6 +63,8 @@ ENTITY_HEALTH = {
     'Enemy2': 60,
     'Enemy2Shot': 1,
     'Item1': 1,
+    'Item1Shot': 1,
+
 }
 
 ENTITY_SCORE = {
@@ -85,6 +89,7 @@ ENTITY_SCORE = {
     'Enemy2': 125,
     'Enemy2Shot': 0,
     'Item1': 100,
+    'Item1Shot': 0,
 }
 
 ENTITY_SPEED = {
@@ -109,6 +114,7 @@ ENTITY_SPEED = {
     'Enemy2': 1,
     'Enemy2Shot': 2,
     'Item1': 2,
+    'Item1Shot': 2,
 
 }
 
@@ -154,7 +160,7 @@ SPAWN_TIME_ITEM = 2000
 
 # T
 TIMEOUT_STEP = 100  # 0,1s
-TIMEOUT_LEVEL = 10000  # 20s
+TIMEOUT_LEVEL = 20000  # 20s
 TEXT_NAME_MENU = 'Britannic'
 TEXT_NAME_SCORE = 'Courier New'
 
