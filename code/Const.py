@@ -112,12 +112,12 @@ ENTITY_SHOT_DELAY = {
 }
 
 # G
-GAME_TITLE = 'Game Title'
+GAME_TITLE = 'Teste'
 
 # L
 LV_BG_IMAGES_NUMBERS = {
-    'Level1Bg': 7,
-    'Level2Bg': 5,
+    'Level1Bg': 5,
+    'Level2Bg': 4,
 }
 
 # M
