@@ -1,4 +1,6 @@
-from code.Const import WIN_WIDTH, ENTITY_SHOT_DELAY
+import pygame
+
+from code.Const import WIN_WIDTH
 from code.Enemy import Enemy
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
@@ -46,22 +48,32 @@ class EntityMediator:
                     ent1.rect.top <= ent2.rect.bottom):
                 ent1.health -= ent2.damage
                 ent2.health -= ent1.damage
-                ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
+                ent1.last_dmg = ent2.name
+                if isinstance(ent1, PlayerShot):  # assigning the last_damage to the owner of the shot made in ent2
+                    ent2.last_dmg = ent1.owner
+                if isinstance(ent2, PlayerShot):  # assigning the last_damage to the owner of the shot made in ent1
+                    ent1.last_dmg = ent2.owner
 
     @staticmethod
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
-        if enemy.last_dmg == 'Player1Shot':
+        if enemy.last_dmg == 'Player1':
             for ent in entity_list:
                 if ent.name == 'Player1':
                     ent.score += enemy.score
-        elif enemy.last_dmg == 'Player2Shot':
+                    death_sound = pygame.mixer.Sound(f'./asset/EnemyDie.mp3')
+                    death_sound.set_volume(0.15)
+                    death_sound.play()
+        elif enemy.last_dmg == 'Player2':
             for ent in entity_list:
                 if ent.name == 'Player2':
                     ent.score += enemy.score
+                    death_sound = pygame.mixer.Sound(f'./asset/EnemyDie.mp3')
+                    death_sound.set_volume(0.15)
+                    death_sound.play()
 
     @staticmethod
-    def give_item(item: Item, entity_list: list[Entity]):
+    def __give_item(item: Item, entity_list: list[Entity]):
         if item.last_dmg == 'Player1':
             for ent in entity_list:
                 if ent.name == 'Player1':
@@ -86,6 +98,7 @@ class EntityMediator:
             if ent.health <= 0:
                 if isinstance(ent, Enemy):
                     EntityMediator.__give_score(ent, entity_list)
+
                 if isinstance(ent, Item):
-                    EntityMediator.give_item(ent, entity_list)
+                    EntityMediator.__give_item(ent, entity_list)
                 entity_list.remove(ent)

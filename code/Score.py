@@ -18,11 +18,11 @@ class Score:
 
     def save(self, game_mode: str, player_score: list[int]):
         pygame.mixer_music.load('./asset/Score.mp3')
-        pygame.mixer_music.play(-1)  # parametro -1 faz a musica tocar infinitamente
+        pygame.mixer_music.play(-1)  # parameter -1 makes the music play infinitely
         db_proxy = DBProxy('DBScore')
         name = ''
         while True:
-            self.window.blit(source=self.surf, dest=self.rect)  # primeiro desenha o background depois desenha o texto
+            self.window.blit(source=self.surf, dest=self.rect)  # first draw the background then draw the text
             self.score_text(48, 'YOU WIN!!!', C_YELLOW, SCORE_POS['Title'])
             score = 0
             text = ''

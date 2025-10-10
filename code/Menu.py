@@ -16,10 +16,11 @@ class Menu:
     def run(self, ):
         menu_option = 0
         pygame.mixer_music.load('./asset/Menu.mp3')
-        pygame.mixer_music.play(-1)  # parametro -1 faz a musica tocar infinitamente
+        pygame.mixer_music.set_volume(0.2)
+        pygame.mixer_music.play(-1)  # parameter -1 makes the music play infinitely
         while True:
             # draw images
-            self.window.blit(source=self.surf, dest=self.rect)  # primeiro desenha o background depois desenha o texto
+            self.window.blit(source=self.surf, dest=self.rect)  # first draw the background then draw the text
             self.menu_text(50, GAME_TITLE, C_MAGENTA, ((WIN_WIDTH / 2), 100))
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
@@ -53,4 +54,3 @@ class Menu:
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)
 
-    # trocar estilo da fonte posteriormente

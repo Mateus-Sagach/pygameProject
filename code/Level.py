@@ -7,8 +7,9 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME_ENEMY, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
-    TIMEOUT_STEP, TIMEOUT_LEVEL, TEXT_NAME_MENU, C_ORANGE, C_YELLOW, EVENT_ITEM, SPAWN_TIME_ITEM
+from code.Const import (C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME_ENEMY,
+                        EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, TEXT_NAME_MENU, C_ORANGE, C_YELLOW, EVENT_ITEM,
+                        SPAWN_TIME_ITEM)
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -62,7 +63,6 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
                 if event.type == EVENT_ITEM:
-                    # implementar depois de colocar segundo item choice = random.choice(('Item1', 'Item2'))
                     self.entity_list.append(EntityFactory.get_entity('Item1'))
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP

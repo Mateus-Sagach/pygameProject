@@ -31,7 +31,7 @@ ENTITY_DAMAGE = {
     'Player1': 1,
     'Player1Shot': 25,
     'Player2': 1,
-    'Player2Shot': 20,
+    'Player2Shot': 15,
     'Enemy1': 1,
     'Enemy1Shot': 20,
     'Enemy2': 1,
@@ -54,9 +54,9 @@ ENTITY_HEALTH = {
     'Level2Bg2': 999,
     'Level2Bg3': 999,
     'Level2Bg4': 999,
-    'Player1': 140,
+    'Player1': 10,
     'Player1Shot': 1,
-    'Player2': 100,
+    'Player2': 10,
     'Player2Shot': 1,
     'Enemy1': 50,
     'Enemy1Shot': 1,
@@ -88,7 +88,7 @@ ENTITY_SCORE = {
     'Enemy1Shot': 0,
     'Enemy2': 125,
     'Enemy2Shot': 0,
-    'Item1': 100,
+    'Item1': 0,
     'Item1Shot': 0,
 }
 
@@ -108,12 +108,12 @@ ENTITY_SPEED = {
     'Player1': 3,
     'Player1Shot': 4,
     'Player2': 3,
-    'Player2Shot': 5,
+    'Player2Shot': 6,
     'Enemy1': 2,
     'Enemy1Shot': 5,
     'Enemy2': 1,
     'Enemy2Shot': 2,
-    'Item1': 2,
+    'Item1': 3,
     'Item1Shot': 2,
 
 }
@@ -123,6 +123,7 @@ ENTITY_SHOT_DELAY = {
     'Player2': 10,
     'Enemy1': 100,
     'Enemy2': 200,
+    'Item1': 30,
 }
 
 # G
@@ -160,7 +161,7 @@ SPAWN_TIME_ITEM = 2000
 
 # T
 TIMEOUT_STEP = 100  # 0,1s
-TIMEOUT_LEVEL = 20000  # 20s
+TIMEOUT_LEVEL = 10000  # 10s
 TEXT_NAME_MENU = 'Britannic'
 TEXT_NAME_SCORE = 'Courier New'
 
@@ -184,4 +185,3 @@ SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
              8: (WIN_WIDTH / 2, 270),
              9: (WIN_WIDTH / 2, 290),
              }
-
